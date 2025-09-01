@@ -1,16 +1,20 @@
-import * as cdk from 'aws-cdk-lib';
-import { Construct } from 'constructs';
-// import * as sqs from 'aws-cdk-lib/aws-sqs';
+import { Stack, StackProps } from 'aws-cdk-lib'
+import { Bucket } from 'aws-cdk-lib/aws-s3'
+import { BucketDeployment, Source } from 'aws-cdk-lib/aws-s3-deployment'
+import { Construct } from 'constructs'
+import * as path from 'path'
 
-export class NetflixQuicksightStack extends cdk.Stack {
-  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
-    super(scope, id, props);
+export class NetflixQuicksightStack extends Stack {
+  constructor(scope: Construct, id: string, props?: StackProps) {
+    super(scope, id, props)
 
-    // The code that defines your stack goes here
+    const netflixBucket = new Bucket(this, 'NetflixQuicksightBucket', {
+      bucketName: 'netflix-quicksight-project'
+    })
 
-    // example resource
-    // const queue = new sqs.Queue(this, 'NetflixQuicksightQueue', {
-    //   visibilityTimeout: cdk.Duration.seconds(300)
-    // });
+    new BucketDeployment(this, 'DeployNetflixDatasets', {
+      sources: [Source.asset(path.join(__dirname, 'data/netflix-dataset'))],
+      destinationBucket: netflixBucket
+    })
   }
 }

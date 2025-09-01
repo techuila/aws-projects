@@ -1,0 +1,13 @@
+{
+  "fileLocations": [
+    {
+      "URIs": ["s3://netflix-quicksight-project/netflix_titles.csv"]
+    }
+  ],
+  "globalUploadSettings": {
+    "format": "CSV",
+    "delimiter": ",",
+    "textqualifier": "\"",
+    "containsHeader": "true"
+  }
+}
