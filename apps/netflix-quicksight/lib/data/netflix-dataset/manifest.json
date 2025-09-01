@@ -1,7 +1,7 @@
 {
   "fileLocations": [
     {
-      "URIs": ["s3://netflix-quicksight-project/netflix_titles.csv"]
+      "URIs": ["s3://netflix-quicksight-project-techuila/netflix_titles.csv"]
     }
   ],
   "globalUploadSettings": {

@@ -9,7 +9,7 @@ export class NetflixQuicksightStack extends Stack {
     super(scope, id, props)
 
     const netflixBucket = new Bucket(this, 'NetflixQuicksightBucket', {
-      bucketName: 'netflix-quicksight-project'
+      bucketName: 'netflix-quicksight-project-techuila'
     })
 
     new BucketDeployment(this, 'DeployNetflixDatasets', {
