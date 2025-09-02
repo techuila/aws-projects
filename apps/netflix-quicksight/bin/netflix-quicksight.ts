@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import * as cdk from 'aws-cdk-lib'
 
-import { NetflixQuicksightStack } from '../lib/netflix-quicksight-stack'
+import { NetflixQuicksightStack } from '../lib/stacks/netflix-quicksight-stack'
 
 const app = new cdk.App()
 const netflixQuicksightStack = new NetflixQuicksightStack(app, 'NetflixQuicksightStack', {})
