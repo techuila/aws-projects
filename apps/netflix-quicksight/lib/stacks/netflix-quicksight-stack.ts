@@ -20,20 +20,15 @@ export class NetflixQuicksightStack extends Stack {
    * Name of the datasource in quicksight
    */
   public static QUICKSIGHT_DATASOURCE_NAME = 'NetflixS3DataSource'
-  /**
-   * By default, Amazon QuickSight uses a role named aws-quicksight-service-role-v0.
-   * @see https://docs.aws.amazon.com/lake-formation/latest/dg/qs-integ-lf.html
-   */
-  public static QUICKSIGHT_SERVICE_ROLE = 'aws-quicksight-service-role-v0'
 
   public static QUICKSIGHT_DATASET_NAME = 'Kaggle Netflix Dataset'
 
-  constructor(scope: Construct, id: string, props?: StackProps) {
+  constructor(scope: Construct, id: string, props: StackProps & { username: string }) {
     super(scope, id, props)
 
     const { bucket, deploy } = new S3BucketAndDeploy(this, 'S3BucketAndDeploy', {
       name: NetflixQuicksightStack.BUCKET_NAME,
-      deploySources: [Source.asset(path.join(__dirname, '..', '..', 'data/netflix-dataset'))]
+      deploySources: [Source.asset(path.join(__dirname, '..', 'data/netflix-dataset'))]
     })
 
     const quicksight = new Quicksight(this, 'Quicksight', {
@@ -77,10 +72,15 @@ export class NetflixQuicksightStack extends Stack {
             }
           }
         ]
+      },
+      managedPolicyProps: {
+        bucket,
+        deployment: deploy,
+        quicksightAccountArn: `arn:aws:quicksight:${this.region}:${this.account}:user/default/${props.username}`
       }
     })
 
-    quicksight.datasource.node.addDependency(bucket)
-    quicksight.dataset.node.addDependency(deploy)
+    quicksight.datasource.node.addDependency(quicksight.managedPolicy)
+    quicksight.datasource.node.addDependency(deploy)
   }
 }
