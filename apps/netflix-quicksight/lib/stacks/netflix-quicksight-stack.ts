@@ -31,7 +31,7 @@ export class NetflixQuicksightStack extends Stack {
       deploySources: [Source.asset(path.join(__dirname, '..', 'data/netflix-dataset'))]
     })
 
-    const quicksight = new Quicksight(this, 'Quicksight', {
+    const quicksight = new Quicksight(this, 'NetflixQuicksight', {
       prefix: 'netflix',
       datasourceProps: {
         name: 'Netflix S3 Data Source',
@@ -62,12 +62,6 @@ export class NetflixQuicksightStack extends Stack {
           {
             castColumnTypeOperation: {
               columnName: 'release_year',
-              newColumnType: 'INTEGER'
-            }
-          },
-          {
-            castColumnTypeOperation: {
-              columnName: 'duration',
               newColumnType: 'INTEGER'
             }
           }

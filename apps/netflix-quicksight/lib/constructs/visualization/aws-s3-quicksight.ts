@@ -74,7 +74,6 @@ export class Quicksight extends Construct {
               delimiter: ',',
               textQualifier: 'DOUBLE_QUOTE',
               containsHeader: true,
-              startFromRow: 1
             }
           }
         }
