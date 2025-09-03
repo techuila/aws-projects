@@ -6,14 +6,13 @@ I used CDK to provision an S3 bucket, upload the dataset and manifest, and conne
 
 The dataset used is `netflix_titles.csv`, a Netflix catalog dataset. A `manifest.json` file is included to define global settings for QuickSight ingestion.  
 
----
+![Dashboard Screenshot](./docs/dashboard.png)
 
 ## ⚙️ Services & Tools Used  
 - **AWS CDK** – Infrastructure as Code (IaC)  
 - **Amazon S3** – Storage for dataset (`netflix_titles.csv`) and `manifest.json`  
 - **Amazon QuickSight** – Data visualization and dashboards  
 
----
 
 ## 🛠️ Project Structure  
 ```
@@ -32,7 +31,6 @@ netflix-quicksight/
 └── tsconfig.json
 ```
 
----
 
 ## 🚀 Steps I Took  
 
@@ -58,14 +56,12 @@ netflix-quicksight/
 - Organized panels in a clean layout.  
 - Exported dashboard as **PDF** for sharing.  
 
----
 
 ## 💡 Key Learnings  
 - **Manifest.json** guides QuickSight to the dataset in S3.  
 - **CfnDataSet uploadSettings** are still required to define CSV format and structure.  
 - IAM permissions are crucial — QuickSight needs explicit access to the S3 bucket.  
 
----
 
 ## ⏱️ Reflection  
 - **Duration:** ~16 hours  
