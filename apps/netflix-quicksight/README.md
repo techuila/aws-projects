@@ -1,12 +1,14 @@
 # Netflix QuickSight with AWS CDK  
 
+![Dashboard Screenshot](./docs/dashboard.png)
+
+--- 
+
 ## 📖 Project Overview  
 This project demonstrates how to integrate **Amazon QuickSight** with an **S3 bucket** using **AWS CDK**.  
 I used CDK to provision an S3 bucket, upload the dataset and manifest, and connect it to QuickSight through L1 constructs (`CfnDataSource`, `CfnDataSet`).  
 
 The dataset used is `netflix_titles.csv`, a Netflix catalog dataset. A `manifest.json` file is included to define global settings for QuickSight ingestion.  
-
-![Dashboard Screenshot](./docs/dashboard.png)
 
 ## ⚙️ Services & Tools Used  
 - **AWS CDK** – Infrastructure as Code (IaC)  
