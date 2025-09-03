@@ -16,7 +16,6 @@ Each project is organized under the `apps/` directory, following a clean monorep
 ├── README.md (this file)
 ```
 
----
 
 ## 🚀 Current Apps
 
@@ -24,10 +23,8 @@ Each project is organized under the `apps/` directory, following a clean monorep
 |--------------------|-----------------------------------------------------------------------------|-----------------------------|
 | **netflix-quicksight** | Visualize Netflix dataset by integrating **Amazon QuickSight** with **S3** using **AWS CDK**. | AWS CDK, S3, QuickSight     |
 
----
 
 ## 🛠️ Monorepo Notes
 - Uses **pnpm** workspaces (or npm/yarn if preferred) for package management.
 - Each app is isolated in `apps/` with its own dependencies and CDK stacks.
 
----
